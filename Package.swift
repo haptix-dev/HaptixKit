@@ -10,21 +10,16 @@ let package = Package(
     products: [
         .library(
             name: "HaptixKit",
-            targets: ["HaptixKit", "HaptixShared"]
+            targets: ["HaptixKit"]
         ),
     ],
     targets: [
         // IMPORTANT: Update the url and checksum after each release.
-        // Run: swift package compute-checksum <file>.xcframework.zip
+        // Run: swift package compute-checksum HaptixKit.xcframework.zip
         .binaryTarget(
             name: "HaptixKit",
-            url: "https://github.com/haptix-dev/HaptixKit/releases/download/v1.1.0/HaptixKit.xcframework.zip",
-            checksum: "23a41f7f20a50b5d524184918a9f7db7ae399cc5c1ac93a9def98ef51b84142b"
-        ),
-        .binaryTarget(
-            name: "HaptixShared",
-            url: "https://github.com/haptix-dev/HaptixKit/releases/download/v1.1.0/HaptixShared.xcframework.zip",
-            checksum: "5a135029af90f0bcdc76bcfd25df812d72c29f04fb7342ea3d1a5c710035be7c"
+            url: "https://github.com/haptix-dev/HaptixKit/releases/download/v1.2.0/HaptixKit.xcframework.zip",
+            checksum: "52309fe2611ac3975d91331ec0cfdf02c5878212d574dea7dd196e22ca4177d0"
         ),
     ]
 )
