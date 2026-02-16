@@ -31,7 +31,7 @@ Then add `HaptixKit` to your target's dependencies:
 .target(
     name: "MyApp",
     dependencies: [
-        .product(name: "HaptixKit", package: "haptix-swift"),
+        .product(name: "HaptixKit", package: "sdk"),
     ]
 )
 ```
@@ -68,8 +68,8 @@ struct MyApp: App {
 
 - iOS 26.0+
 - Xcode 26+
-- A Haptix license key (get one at [haptix.dev](https://haptix.dev))
-- The [Haptix macOS app](https://haptix.dev/download) running on your Mac
+- A Haptix license key
+- The Haptix macOS app running on your Mac
 
 ## How It Works
 
@@ -78,11 +78,6 @@ struct MyApp: App {
 3. Connect your MCP agent (Cursor, Claude Code, Codex, etc.)
 4. The agent can now see your app's screen, read the accessibility tree, and perform gestures
 
-## Documentation
-
-- [Getting Started Guide](https://haptix.dev/docs)
-- [API Reference](https://haptix.dev/docs/api)
-
 ## License
 
-Proprietary. See [haptix.dev/terms](https://haptix.dev/terms) for details.
+Proprietary. All rights reserved.
