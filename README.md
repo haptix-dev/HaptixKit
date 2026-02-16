@@ -12,7 +12,7 @@ Add HaptixKit to your project in Xcode:
 2. Enter the repository URL:
 
 ```
-https://github.com/haptix-dev/sdk
+https://github.com/haptix-dev/HaptixKit
 ```
 
 3. Select the version and add to your target.
@@ -21,7 +21,7 @@ Or add it to your `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/haptix-dev/sdk.git", from: "1.0.0"),
+    .package(url: "https://github.com/haptix-dev/HaptixKit.git", from: "1.1.0"),
 ]
 ```
 
@@ -31,7 +31,7 @@ Then add `HaptixKit` to your target's dependencies:
 .target(
     name: "MyApp",
     dependencies: [
-        .product(name: "HaptixKit", package: "sdk"),
+        .product(name: "HaptixKit", package: "HaptixKit"),
     ]
 )
 ```
@@ -69,7 +69,7 @@ struct MyApp: App {
 - iOS 26.0+
 - Xcode 26+
 - A Haptix license key
-- The Haptix macOS app running on your Mac
+- The [Haptix macOS app](https://github.com/haptix-dev/Haptix) running on your Mac
 
 ## How It Works
 
