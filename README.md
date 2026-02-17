@@ -38,17 +38,22 @@ Then add `HaptixKit` to your target's dependencies:
 
 ## Usage
 
-Add the `.haptix()` modifier to your root view:
+Add one line to your app's `init()`. HaptixKit runs entirely outside the
+SwiftUI view hierarchy -- it manages its own server and overlays independently
+and will not cause view re-renders or interfere with your app.
 
 ```swift
 import HaptixKit
 
 @main
 struct MyApp: App {
+    init() {
+        Haptix.start(license: "HPTX-XXXX-XXXX-XXXX")
+    }
+
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .haptix(license: "HPTX-XXXX-XXXX-XXXX")
         }
     }
 }
@@ -58,11 +63,35 @@ struct MyApp: App {
 
 ```swift
 // Require pairing code (default)
-.haptix(license: "HPTX-XXXX-XXXX-XXXX")
+Haptix.start(license: "HPTX-XXXX-XXXX-XXXX")
 
-// Skip pairing code
-.haptix(license: "HPTX-XXXX-XXXX-XXXX", passcode: false)
+// Skip pairing code for trusted networks
+Haptix.start(license: "HPTX-XXXX-XXXX-XXXX", passcode: false)
+
+// Disable haptic feedback (enabled by default)
+Haptix.start(license: "HPTX-XXXX-XXXX-XXXX", haptics: false)
 ```
+
+### Required Info.plist Keys
+
+HaptixKit validates these at startup and prints warnings if missing:
+
+```xml
+<key>NSLocalNetworkUsageDescription</key>
+<string>Haptix uses the local network to connect agents to this app for development and debugging.</string>
+
+<key>NSBonjourServices</key>
+<array>
+    <string>_haptix._tcp</string>
+</array>
+```
+
+You also need the **Multicast Networking** entitlement:
+Xcode > Target > Signing & Capabilities > + Capability > Multicast Networking
+
+When an agent is connected, the device shows a **blue activity border** and plays
+**haptic feedback** on each action — security indicators so you always know when
+your device is being controlled remotely.
 
 ## Requirements
 
