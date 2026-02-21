@@ -4,36 +4,23 @@ Connect any MCP-capable AI agent to a live iOS app running on a real device. See
 
 ## Installation
 
-### Swift Package Manager
+### Using Xcode
 
-Add HaptixKit to your project in Xcode:
+1. Go to **File → Add Package Dependencies**
+2. Paste the package URL: `https://github.com/haptix-dev/HaptixKit`
+3. Click **Add Package**
 
-1. Go to **File > Add Package Dependencies**
-2. Enter the repository URL:
+### Using Package.swift
 
-```
-https://github.com/haptix-dev/HaptixKit
-```
-
-3. Select the version and add to your target.
-
-Or add it to your `Package.swift`:
+Add HaptixKit to your `Package.swift` dependencies:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/haptix-dev/HaptixKit.git", from: "1.0.0"),
+    .package(
+        url: "https://github.com/haptix-dev/HaptixKit.git",
+        from: "1.0.0"
+    )
 ]
-```
-
-Then add `HaptixKit` to your target's dependencies:
-
-```swift
-.target(
-    name: "MyApp",
-    dependencies: [
-        .product(name: "HaptixKit", package: "HaptixKit"),
-    ]
-)
 ```
 
 ## Usage
@@ -43,12 +30,16 @@ SwiftUI view hierarchy -- it manages its own server and overlays independently
 and will not cause view re-renders or interfere with your app.
 
 ```swift
+#if DEBUG
 import HaptixKit
+#endif
 
 @main
 struct MyApp: App {
     init() {
+        #if DEBUG
         Haptix.start(license: "HPTX-XXXX-XXXX-XXXX")
+        #endif
     }
 
     var body: some Scene {
@@ -59,18 +50,13 @@ struct MyApp: App {
 }
 ```
 
-### Options
+### SDK parameters
 
-```swift
-// Require pairing code (default)
-Haptix.start(license: "HPTX-XXXX-XXXX-XXXX")
-
-// Skip pairing code for trusted networks
-Haptix.start(license: "HPTX-XXXX-XXXX-XXXX", passcode: false)
-
-// Disable haptic feedback (enabled by default)
-Haptix.start(license: "HPTX-XXXX-XXXX-XXXX", haptics: false)
-```
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `license` | `String` | Required | Your Haptix license key |
+| `passcode` | `Bool` | `true` | Require 6-digit pairing code for security |
+| `haptics` | `Bool` | `true` | Haptic feedback on device when agent performs actions |
 
 ### Required Info.plist Keys
 
@@ -78,7 +64,7 @@ HaptixKit validates these at startup and prints warnings if missing:
 
 ```xml
 <key>NSLocalNetworkUsageDescription</key>
-<string>Haptix uses the local network to connect agents to this app for development and debugging.</string>
+<string>Haptix uses the local network to connect your AI agent to this app during development.</string>
 
 <key>NSBonjourServices</key>
 <array>
@@ -90,7 +76,7 @@ You also need the **Multicast Networking** entitlement:
 Xcode > Target > Signing & Capabilities > + Capability > Multicast Networking
 
 When an agent is connected, the device shows a **blue activity border** and plays
-**haptic feedback** on each action — security indicators so you always know when
+**haptic feedback** on each action -- security indicators so you always know when
 your device is being controlled remotely.
 
 ## Requirements
