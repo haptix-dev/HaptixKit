@@ -98,7 +98,7 @@ your device is being controlled remotely.
 - iOS 26.0+
 - Xcode 26+
 - A Haptix license key
-- The [Haptix macOS app](https://github.com/haptix-dev/Haptix) running on your Mac
+- The [Haptix macOS app](https://get.haptix.dev/latest/Haptix.dmg) running on your Mac
 
 ## How It Works
 
