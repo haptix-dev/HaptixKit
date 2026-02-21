@@ -19,7 +19,7 @@ let package = Package(
         .binaryTarget(
             name: "HaptixKit",
             url: "https://get.haptix.dev/v1.0.0/HaptixKit.xcframework.zip",
-            checksum: "ecf7f15dda05b31c67a9bb1446b07c6f994816ba09eb9f64b7db431547e4772d"
+            checksum: "ea3952a993d24eff10a82dbe053e78100d29a0c80f8a2fb37e68d04486975047"
         ),
     ]
 )
