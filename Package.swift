@@ -18,8 +18,8 @@ let package = Package(
         // Run: swift package compute-checksum HaptixKit.xcframework.zip
         .binaryTarget(
             name: "HaptixKit",
-            url: "https://get.haptix.dev/v1.2.0/HaptixKit.xcframework.zip",
-            checksum: "a6b74ec64fbc32b0ee5a02683e82207ccd5ff5604b3c178d4d6933ef1c48e443"
+            url: "https://get.haptix.dev/v1.5.0/HaptixKit.xcframework.zip",
+            checksum: "1543db01c2c6172facbd11438c578fceb2bc381a4f8893ad6270d8a357d9dc86"
         ),
     ]
 )
